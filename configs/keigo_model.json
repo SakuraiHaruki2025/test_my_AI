@@ -1,0 +1,23 @@
+{
+  "model_type": "keigo",
+  "description": "敬語で話す学習済みAI",
+  "base_model": "rinna/japanese-gpt-neox-3.6b",
+  "inference_config": {
+    "load_in_8bit": true,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "repetition_penalty": 1.1,
+    "max_new_tokens": 100
+  },
+  "prompt_template": "丁寧に敬語で答えてください。\n\n質問: {input}\n回答: ",
+  "notes": [
+    "このモデルは学習済みの日本語モデルを使用します",
+    "rinnaのモデルは日本語に特化しており、敬語表現も含まれています",
+    "推論時は8bit量子化を使用してメモリを節約します"
+  ],
+  "alternatives": [
+    "cyberagent/open-calm-7b",
+    "rinna/japanese-gpt-1b",
+    "stabilityai/japanese-stablelm-base-alpha-7b"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "model_type": "adjective_ending",
+  "description": "形容詞＋語尾（やね）で話すAI（要学習）",
+  "base_model": "rinna/japanese-gpt-neox-3.6b",
+  "training_config": {
+    "use_qlora": true,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "num_epochs": 5,
+    "batch_size": 4,
+    "gradient_accumulation_steps": 4,
+    "learning_rate": 3e-4,
+    "max_length": 256
+  },
+  "inference_config": {
+    "load_in_4bit": true,
+    "temperature": 0.9,
+    "top_p": 0.95,
+    "repetition_penalty": 1.2,
+    "max_new_tokens": 50
+  },
+  "prompt_template": "形容詞＋「やね」の形で答えてください。\n\n入力: {input}\n出力: ",
+  "pattern_examples": [
+    "きれいやね",
+    "うれしそうやね",
+    "楽しいやね",
+    "難しいやね",
+    "おもしろいやね",
+    "悲しいやね",
+    "美味しいやね",
+    "暑いやね",
+    "寒いやね",
+    "眠そうやね"
+  ],
+  "data_requirements": [
+    "入力文に対して形容詞＋やねで応答するデータが必要",
+    "例: 入力「これどう？」→ 出力「きれいやね」",
+    "感情や状態を形容詞で表現するパターン"
+  ],
+  "notes": [
+    "特殊な言語パターンのため、専用データセットでの学習が必須",
+    "短い応答に特化しているため、max_lengthは短め",
+    "繰り返しを避けるためrepetition_penaltyを高めに設定"
+  ]
+}
